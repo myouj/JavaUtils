@@ -14,7 +14,7 @@ class Connect {
 
     static {
         config = HBaseConfiguration.create();
-        config.set("hbase.zookeeper.quorum", "10.18.0.12");
+        config.set("hbase.zookeeper.quorum", "119.29.97.133");
         config.set("hbase.zookeeper.property.clientPort", "2181");
 
         System.setProperty("hadoop.home.dir", "E:\\winutils\\hadoop-common-2.6.0-bin");
