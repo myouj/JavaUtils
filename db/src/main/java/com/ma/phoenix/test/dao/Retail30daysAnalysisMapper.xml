@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ma.phoenix.test.dao.Retail30daysAnalysisMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.ma.phoenix.test.pojo.Retail30daysAnalysis">
+        <id column="id" property="id" />
+        <result column="retail_id" property="retailId" />
+        <result column="sum" property="sum" />
+        <result column="amount" property="amount" />
+        <result column="price" property="price" />
+        <result column="orders" property="orders" />
+        <result column="ciga_cat" property="cigaCat" />
+        <result column="out_prov_ciga_ratio" property="outProvCigaRatio" />
+        <result column="high_ratio" property="highRatio" />
+        <result column="orders_stream_ratio" property="ordersStreamRatio" />
+        <result column="sum_change_lyear" property="sumChangeLyear" />
+        <result column="amount_change_lyear" property="amountChangeLyear" />
+        <result column="price_change_lyear" property="priceChangeLyear" />
+        <result column="out_prov_ciga_ratio_change_lyear" property="outProvCigaRatioChangeLyear" />
+        <result column="high_ratio_change_lyear" property="highRatioChangeLyear" />
+        <result column="sum_change_lmonth" property="sumChangeLmonth" />
+        <result column="amount_change_lmonth" property="amountChangeLmonth" />
+        <result column="price_change_lmonth" property="priceChangeLmonth" />
+        <result column="out_prov_ciga_ratio_change_lmonth" property="outProvCigaRatioChangeLmonth" />
+        <result column="high_ratio_change_lmonth" property="highRatioChangeLmonth" />
+        <result column="order_sum_with_km" property="orderSumWithKm" />
+        <result column="order_amount_with_km" property="orderAmountWithKm" />
+        <result column="high_with_km" property="highWithKm" />
+        <result column="out_prov_with_km" property="outProvWithKm" />
+        <result column="orders_stream_with_city" property="ordersStreamWithCity" />
+        <result column="price_cons_with_city" property="priceConsWithCity" />
+        <result column="grade_stream_with_city" property="gradeStreamWithCity" />
+        <result column="price_with_km_hprice_with_city" property="priceWithKmHpriceWithCity" />
+        <result column="out_prov_order_with_km" property="outProvOrderWithKm" />
+        <result column="out_prov_ciga_stream_with_city" property="outProvCigaStreamWithCity" />
+        <result column="pos_sum_orders_with_city" property="posSumOrdersWithCity" />
+    </resultMap>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT id,retail_id,sum,amount,price,orders,ciga_cat,out_prov_ciga_ratio,high_ratio,
+            orders_stream_ratio,sum_change_lyear,amount_change_lyear,price_change_lyear,out_prov_ciga_ratio_change_lyear,
+            high_ratio_change_lyear,sum_change_lmonth,amount_change_lmonth,price_change_lmonth,out_prov_ciga_ratio_change_lmonth,high_ratio_change_lmonth,
+            order_sum_with_km,order_amount_with_km,high_with_km,out_prov_with_km,orders_stream_with_city,price_cons_with_city,grade_stream_with_city,
+            price_with_km_hprice_with_city,out_prov_order_with_km,out_prov_ciga_stream_with_city,pos_sum_orders_with_city
+        FROM TOBACCO.RETAIL_30DAYS_ANALYSIS
+    </select>
+
+</mapper>

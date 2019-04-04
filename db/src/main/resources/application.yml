@@ -1,0 +1,8 @@
+#数据源
+spring:
+  datasource:
+    phoenix:
+      jdbc-url: jdbc:phoenix:10.72.32.26
+      driver-class-name: org.apache.phoenix.jdbc.PhoenixDriver
+server:
+  port: 8888

@@ -27,7 +27,7 @@ public class read {
         try {
             //跳过文件头
             reader.readHeaders();
-            String[] heads = {"id", "address", "location"};
+            String[] heads = {"id", "address", "longitude", "latitude"};
             //写入文件头
             writer.writeRecord(heads);
             PointInfo poi;
@@ -37,7 +37,7 @@ public class read {
                 //string数组形式获取一行的数据
                 String[] value = reader.getValues();
                 String id = value[0];
-                String address = value[5];
+                String address = value[1];
 
 
                 String url = "https://restapi.amap.com/v3/geocode/geo?";
@@ -45,7 +45,7 @@ public class read {
 
                 sb.append("key=e014a9822a6b64fcfe2b46af183ae62c");
                 sb.append("&address=" + address);
-                sb.append("&city=邵阳市");
+                sb.append("&city=岳阳市");
 
 
                 ObjectMapper objectMapper = new ObjectMapper();
@@ -57,9 +57,10 @@ public class read {
                                 , "\"district\":\"\""), PointInfo.class);
                 try {
                     geocode = poi.getGeocodes().get(0);
-                    String[] writeLine = {id, address, ""};
+                    String[] writeLine = {id, address, "", ""};
                     if (geocode != null) {
-                        writeLine[2] = geocode.getLocation();
+                        writeLine[2] = geocode.getLocation().split(",")[0];
+                        writeLine[3] = geocode.getLocation().split(",")[1];
                     }
                     //写入一行的数据
                     writer.writeRecord(writeLine);
@@ -118,8 +119,8 @@ public class read {
     }
 
     public static void main(String[] args) throws Exception {
-        readAndWriteCsv("D:\\workspace\\utils\\spider\\src\\main\\resources\\shaoyang_address.csv",
-                "D:\\workspace\\utils\\spider\\src\\main\\resources\\out.csv");
+        readAndWriteCsv("D:\\workspace\\utils\\spider\\src\\main\\resources\\yueyang_clean_address.csv",
+                "D:\\workspace\\utils\\spider\\src\\main\\resources\\yueyang_location.csv");
     }
 
 }
